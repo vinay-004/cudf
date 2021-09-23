@@ -9,13 +9,18 @@ import sysconfig
 from distutils.spawn import find_executable
 from distutils.sysconfig import get_python_lib
 
+from setuptools import find_packages, setup
+from setuptools.extension import Extension
+
+from setuptools import dist
+dist.Distribution().fetch_build_eggs(["Cython>=0.29,<0.30", 'numpy>=1.17,<1.21'])
+
+
+
 import numpy as np
 import pyarrow as pa
 from Cython.Build import cythonize
 from Cython.Distutils import build_ext
-from setuptools import find_packages, setup
-from setuptools.extension import Extension
-
 import versioneer
 
 install_requires = [
